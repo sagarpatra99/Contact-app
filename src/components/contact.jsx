@@ -18,7 +18,7 @@ export default function Contact() {
     navigate("/");
   };
   return (
-    <div className="min-h-screen h-full w-100 bg-gray-700 relative flex items-start flex-col p-6 space-y-4 text-white">
+    <div className="min-h-screen h-screen w-100 bg-gray-700 relative flex items-start flex-col p-6 space-y-4 text-white">
       <div className="w-full flex items-center justify-between">
         <h2 className="flex items-center gap-2 font-semibold">
           <Users size={20} /> All Contacts
