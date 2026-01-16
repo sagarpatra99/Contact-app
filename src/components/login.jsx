@@ -21,7 +21,7 @@ export default function Login() {
 
   return (
     <div className="h-screen bg-gray-200 flex items-start flex-col p-6 space-y-4">
-      <h2 className="text-2xl font-semibold">Signin to your PopX account</h2>
+      <h2 className="text-2xl font-semibold">Signin to your account</h2>
       <p className="mr-30k text-gray-400 font-semibold">
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>

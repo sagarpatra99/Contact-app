@@ -18,7 +18,7 @@ export default function Contact() {
     navigate("/");
   };
   return (
-    <div className="min-h-screen h-screen w-100 bg-gray-700 relative flex items-start flex-col p-6 space-y-4 text-white">
+    <div className="min-h-screen w-100 bg-gray-700 relative flex items-start flex-col p-6 space-y-4 text-white">
       <div className="w-full flex items-center justify-between">
         <h2 className="flex items-center gap-2 font-semibold">
           <Users size={20} /> All Contacts
@@ -55,7 +55,7 @@ export default function Contact() {
       <Link
         to="/add-contact"
         // className="fixed bottom-10 right-5 bg-blue-500 py-2 px-3 rounded-lg"
-        className="fixed bottom-6 right-6 z-50 bg-blue-500 p-4 rounded-full shadow-xl"
+        className="absolute bottom-6 right-6 z-50 bg-blue-500 p-4 rounded-full shadow-xl"
       >
         <Plus />
       </Link>

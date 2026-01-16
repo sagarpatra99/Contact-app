@@ -32,7 +32,7 @@ export default function ContactDetails() {
   };
 
   return (
-    <div className="h-full max-w-100 w-100 bg-gray-700 flex items-center justify-center overflow-hidden flex-col space-y-4 text-white relative">
+    <div className="h-ful l max-w-100 w-100 bg-gray-700 flex items-center justify-center overflow-hidden flex-col space-y-4 text-white relative">
       <nav className="flex items-center justify-between w-100 fixed top-0 py-4 px-5 bg-gray-700">
         <div
           onClick={() => {

@@ -67,14 +67,67 @@ export const saveContact = (newContact) => {
   localStorage.setItem(USERS_KEY, JSON.stringify(updatedAllUsers));
 };
 
-export const deleteContact = (contactIndex) => {
-  const loggedUser = JSON.parse(localStorage.getItem(LOGGED_IN_USER_KEY));
+// export const deleteContact = (contactIndex) => {
+//   const loggedUser = JSON.parse(localStorage.getItem(LOGGED_IN_USER_KEY));
+//   const users = JSON.parse(localStorage.getItem(USERS_KEY) || []);
 
-  if(!loggedUser) {
+//   if (!loggedUser) {
+//     throw new Error("User not logged in");
+//   }
+
+//   loggedUser.contacts.splice(contactIndex, 1);
+
+//   const updatedUser = users.map((user) =>
+//     user.id === loggedUser.id ? updatedUser : user
+//   );
+
+//   localStorage.setItem(LOGGED_IN_USER_KEY, JSON.stringify(loggedUser));
+//   localStorage.setItem(USERS_KEY, JSON.stringify(updatedUser));
+// };
+
+export const deleteContact = (contactIndex) => {
+  // 1. Get logged-in user
+  const loggedUser = JSON.parse(
+    localStorage.getItem(LOGGED_IN_USER_KEY)
+  );
+
+  if (!loggedUser) {
     throw new Error("User not logged in");
   }
 
-  loggedUser.contacts.splice(contactIndex, 1);
+  // 2. Validate index
+  if (
+    contactIndex < 0 ||
+    contactIndex >= loggedUser.contacts.length
+  ) {
+    throw new Error("Invalid contact index");
+  }
 
-  localStorage.setItem(LOGGED_IN_USER_KEY, JSON.stringify(loggedUser))
-}
+  // 3. Remove contact immutably
+  const updatedContacts = loggedUser.contacts.filter(
+    (_, index) => index !== contactIndex
+  );
+
+  const updatedUser = {
+    ...loggedUser,
+    contacts: updatedContacts,
+  };
+
+  // 4. Update logged-in user
+  localStorage.setItem(
+    LOGGED_IN_USER_KEY,
+    JSON.stringify(updatedUser)
+  );
+
+  // 5. Update master users list
+  const users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+
+  const updatedUsers = users.map((user) =>
+    user.id === updatedUser.id ? updatedUser : user
+  );
+
+  localStorage.setItem(
+    USERS_KEY,
+    JSON.stringify(updatedUsers)
+  );
+};
